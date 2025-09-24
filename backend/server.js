@@ -21,10 +21,11 @@ if (!fs.existsSync(uploadsDir)) {
 // CORS configuration for production
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production'
-    ? ['https://your-frontend-domain.com', 'https://your-frontend-domain.vercel.app']
+    ? true  // Allow all origins for now - update with your Vercel domain later
     : ['http://localhost:3000'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 };
 
 app.use(cors(corsOptions));

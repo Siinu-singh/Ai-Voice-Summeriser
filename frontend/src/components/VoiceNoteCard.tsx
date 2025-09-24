@@ -131,7 +131,9 @@ const VoiceNoteCard: React.FC<VoiceNoteCardProps> = ({ note, onUpdate, onDelete 
         <div className="audio-section">
           <audio
             controls
-            src={`http://localhost:5000/${note.audioFilePath}`}
+            src={`${process.env.NODE_ENV === 'production'
+              ? 'https://voicenotes-backend-jdex.onrender.com'
+              : 'http://localhost:5000'}/${note.audioFilePath}`}
             className="audio-player"
           />
           <span className="duration">Duration: {formatDuration(note.duration)}</span>
